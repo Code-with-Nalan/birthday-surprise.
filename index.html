@@ -1,1 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Birthday Srilekha 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7fb;
+  --accent:#e76ea2;
+  --muted:#6b6b6b;
+  --card:#ffffff;
+  --glass: rgba(255,255,255,0.7);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#222;background:linear-gradient(180deg,#fff8fb 0%, #f3f6ff 100%);min-height:100vh}
+.container{max-width:980px;margin:36px auto;padding:28px}
+header{display:flex;align-items:center;gap:18px}
+.logo{width:78px;height:78px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffd6e8,#ffd9f0);box-shadow:0 6px 18px rgba(231,110,162,0.12);font-family:'Great Vibes';font-size:28px;color:#7a1240}
+h1{margin:0;font-family:'Great Vibes';font-size:44px;color:#7a1240}
+p.lead{margin:6px 0 0;color:var(--muted)}
+
+.hero{margin-top:22px;background:var(--card);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(120,80,120,0.06);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.message{padding:6px}
+.poem{background:linear-gradient(90deg, rgba(231,110,162,0.06), rgba(167,119,199,0.03));padding:16px;border-radius:12px;margin-bottom:12px}
+.small{font-size:14px;color:var(--muted)}
+.surprise-btn{display:inline-block;background:linear-gradient(90deg,#ff6fb1,#c86bd4);color:white;padding:12px 18px;border-radius:12px;border:none;font-weight:600;cursor:pointer;box-shadow:0 8px 18px rgba(200,107,212,0.18)}
+
+.gallery{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:60}
+.modal .inner{max-width:900px;width:92%;background:white;border-radius:12px;padding:16px}
+.modal img{width:100%;height:auto;border-radius:8px}
+
+.reveal{margin-top:12px;padding:14px;background:linear-gradient(180deg,#fff,#fff6fb);border-radius:12px;border:1px solid rgba(200,120,160,0.08)}
+.hidden-msg{display:none;font-size:16px;color:#4a1240}
+
+footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:420px){
+  .gallery{grid-template-columns:repeat(1,1fr)}
+  h1{font-size:36px}
+}
+
+canvas.confetti{position:fixed;pointer-events:none;top:0;left:0;z-index:999}
+.audio-player{margin-top:15px;text-align:center;}
+.audio-player audio{width:100%;max-width:400px;margin:6px 0;border-radius:8px;}
+</style>
+</head>
+<body>
+<canvas class="confetti"></canvas>
+<div class="container">
+<header>
+  <div class="logo">Sr</div>
+  <div>
+    <h1>Happy Birthday, Srilekha 🎂</h1>
+    <p class="lead">A little corner of the internet I made just for you — with memories, wishes, and one big surprise ❤️</p>
+  </div>
+</header>
+
+<main class="hero">
+<div class="hero-grid">
+  <div class="message">
+    <div class="poem">
+      <p style="margin:0;font-family:'Great Vibes';font-size:22px;color:#873050">Before the candles start to glow,<br>and birthday lights begin to show,<br>I whisper softly through the air —<br>You’re my wish, beyond compare.</p>
+    </div>
+
+    <p class="small">My dearest <strong>Srilekha</strong>,</p>
+    <p>I couldn’t wait for your day to tell you how much you mean to me. Every smile of yours is my sunrise, every laugh my favorite melody. I promise to make your birthday and every day after feel like a celebration. — <em>With all my love</em>.</p>
+
+    <div style="margin-top:12px">
+      <button class="surprise-btn" id="revealBtn">Open your surprise 🎁</button>
+    </div>
+
+    <div class="reveal" id="revealArea" style="margin-top:14px">
+      <div class="small">Click the pink heart to reveal the message...</div>
+      <div style="margin-top:8px">
+        <button id="heart" class="surprise-btn" style="background:linear-gradient(90deg,#ff9ec4,#ff6fb1);padding:10px 14px;border-radius:50px;font-size:18px">💗</button>
+      </div>
+      <div class="hidden-msg" id="hiddenMsg" style="margin-top:12px">
+        <p style="margin:0">Happy Advance Birthday, my angel. I’m counting the seconds till your day — and already celebrating the gift of you. I love you more than words can hold. — Forever yours.</p>
+      </div>
+    </div>
+
+    <!-- Voice messages -->
+    <div class="audio-player">
+      <h3>Listen to My Voice Messages ❤️</h3>
+      <audio controls>
+        <source src="voices/audio1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+  </div>
+
+  <aside style="padding:6px">
+    <div style="background:linear-gradient(180deg,#fff,#fff8fb);padding:12px;border-radius:12px;text-align:center">
+      <div style="font-size:13px;color:var(--muted)">Now Playing</div>
+      <div style="margin-top:8px;font-weight:600;color:#7a1240">A Thousand Years — Christina Perri</div>
+      <div style="margin-top:10px" class="audio-player">
+        <audio controls autoplay loop>
+          <source src="voices/audio2.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">Tip: Tap play if it doesn’t start automatically.</div>
+    </div>
+  </aside>
+</div>
+
+<section style="margin-top:18px">
+  <h3 style="margin:6px 0 10px;font-family:'Great Vibes';color:#7a1240">Memories — Photo Gallery</h3>
+  <div class="gallery" id="gallery">
+    <img data-full="images/pic1.jpg" src="images/pic1.jpg" alt="Memory 1">
+    <img data-full="images/pic2.jpg" src="images/pic2.jpg" alt="Memory 2">
+    <img data-full="images/pic3.jpg" src="images/pic3.jpg" alt="Memory 3">
+    <img data-full="images/pic4.jpg" src="images/pic4.jpg" alt="Memory 4">
+    <img data-full="images/pic5.jpg" src="images/pic5.jpg" alt="Memory 5">
+    <img data-full="images/pic6.jpg" src="images/pic6.jpg" alt="Memory 6">
+  </div>
+</section>
+
+<section style="margin-top:18px">
+  <h3 style="margin:6px 0 10px;font-family:'Great Vibes';color:#7a1240">A Short Love Letter</h3>
+  <div style="padding:14px;background:var(--glass);border-radius:12px">
+    <p style="margin:0">My dearest <strong>Srilekha</strong>,</p>
+    <p style="margin:8px 0 0">I made this little page just to tell you — I love you more every day. Your smile is my sunrise, your voice my favorite song. There are no big words that can hold what you mean to me, but I promise to spend every day showing you. Happy advance birthday, my love. — Always & forever.</p>
+  </div>
+</section>
+
+<footer>
+  <div>Made with ❤️ — A surprise from someone who adores you</div>
+</footer>
+</div>
+
+<!-- Modal for lightbox -->
+<div class="modal" id="modal">
+  <div class="inner">
+    <img id="modalImg" src="" alt="full">
+    <div style="text-align:center;margin-top:10px">
+      <button id="prevBtn" class="surprise-btn" style="background:linear-gradient(90deg,#ff6fb1,#c86bd4);padding:8px 12px;">⬅</button>
+      <button id="nextBtn" class="surprise-btn" style="background:linear-gradient(90deg,#ff6fb1,#c86bd4);padding:8px 12px;">➡</button>
+    </div>
+    <div style="text-align:right;margin-top:8px"><button id="closeModal" style="padding:8px 12px;border-radius:8px;border:none;background:#eee;cursor:pointer">Close</button></div>
+  </div>
+</div>
+
+<script>
+// Gallery Lightbox
+const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+let currentIndex = 0;
+const images = Array.from(gallery.querySelectorAll('img'));
+
+function showModal(index){ currentIndex=index; modalImg.src=images[index].dataset.full; modal.style.display='flex'; }
+function showNext(){ currentIndex=(currentIndex+1)%images.length; modalImg.src=images[currentIndex].dataset.full; }
+function showPrev(){ currentIndex=(currentIndex-1+images.length)%images.length; modalImg.src=images[currentIndex].dataset.full; }
+
+images.forEach((img,i)=> img.addEventListener('click',()=>showModal(i)));
+document.getElementById('closeModal').onclick = ()=> modal.style.display='none';
+document.getElementById('nextBtn').onclick = showNext;
+document.getElementById('prevBtn').onclick = showPrev;
+modal.onclick = (e)=>{ if(e.target===modal) modal.style.display='none'; }
+
+// Surprise heart & confetti
+const heart=document.getElementById('heart');
+const hidden=document.getElementById('hiddenMsg');
+const revealBtn=document.getElementById('revealBtn');
+const confCanvas=document.querySelector('canvas.confetti');
+const ctx=confCanvas.getContext('2d');
+function resizeCanvas(){confCanvas.width=window.innerWidth; confCanvas.height=window.innerHeight;}
+window.addEventListener('resize',resizeCanvas); resizeCanvas();
+
+function launchConfetti(){
+  const pieces=[]; const colors=['#ff6fb1','#ffd1e8','#c86bd4','#ffd38b'];
+  for(let i=0;i<120;i++){
+    pieces.push({x:Math.random()*confCanvas.width,y:-10,vy:1+Math.random()*3,ax:0.01*(Math.random()-0.5),rot:Math.random()*360,w:6+Math.random()*8,color:colors[Math.floor(Math.random()*colors.length)]});
+  }
+  let t=0;
+  const id=setInterval(()=>{
+    ctx.clearRect(0,0,confCanvas.width,confCanvas.height);
+    for(const p of pieces){
+      p.x+=p.ax*10; p.y+=p.vy; p.vy+=0.02; p.rot+=4;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color; ctx.fillRect(-p.w/2,-p.w/2,p.w,p.w*0.6); ctx.restore();
+    }
+    t+=1; if(t>140){clearInterval(id);ctx.clearRect(0,0,confCanvas.width,confCanvas.height);}
+  },16);
+}
+
+revealBtn.addEventListener('click',()=>{document.getElementById('revealArea').scrollIntoView({behavior:'smooth',block:'center'}); heart.animate([{transform:'scale(1)'},{transform:'scale(1.14)'},{transform:'scale(1)'}],{duration:700});});
+heart.addEventListener('click',()=>{hidden.style.display='block'; launchConfetti();});
+</script>
+</body>
+</html>
 
